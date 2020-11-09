@@ -19,12 +19,12 @@ end
   # code goes here
 
 def get_japanese_emoticon(path, emoticon)
-  emoji = load_library(path)
-  if emoji["get_emoticon"].has_key?(emoticon)
-    emoji["get_emoticon"][emoticon]
-  else
-    return "Sorry, that emoticon was not found"
+  emoticon_hash = load_library(path)
+  result = emoticon_hash["get_emoticon"][emoticon]
+  if result == nil
+    result = "Sorry, that emoticon was not found" 
   end
+  result
 end
   # code goes here
 
