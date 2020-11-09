@@ -17,12 +17,11 @@ end
   # code goes here
 
 def get_japanese_emoticon(path, emoticon)
-  emoticons = load_library(path) #call load_library
-  result = emoticons["get_emoticon"][emoticon]
-  if result
-    result
+  emoji = load_library(path)
+  if emoji["get_emoticon"].has_key?(emoticon)
+    emoji["get_emoticon"][emoticon]
   else
-    "Sorry, that emoticon was not found"
+    return "Sorry, that emoticon was not found"
   end
 end
   # code goes here
