@@ -4,18 +4,12 @@ path = YAML.load_file('./lib/emoticons.yml')
 puts path
 
 def load_library(path)
-  emoticons = YAML.load_file(path)
-  emoticon_hash = Hash.new
-
-  emoticon_hash["get_emoticon"] = Hash.new
-  emoticon_hash["get_meaning"] = Hash.new
-
-  emoticons.each do |english_word, emoticon_set|
-    emoticon_hash["get_emoticon"][emoticon_set.first] = emoticon_set.last
-    emoticon_hash["get_meaning"][emoticon_set.last] = english_word
+  final_hash = {}
+  YAML.load_file(path).each do |key,value|
+    final_hash[key] = {}
+    final_hash[key][:english] = value[0]
+    final_hash[key][:japanese] = value[1]
   end
-  emoticon_hash
-end
   # code goes here
 
 def get_japanese_emoticon(path, emoticon)
