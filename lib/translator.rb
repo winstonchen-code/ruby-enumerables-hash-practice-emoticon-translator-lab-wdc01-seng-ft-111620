@@ -15,12 +15,12 @@ end
   # code goes here
 
 def get_japanese_emoticon(path, emoticon)
-  emoticon_hash = load_library(path)
-  result = emoticon_hash["get_emoticon"][emoticon]
-  if result == nil
-    result = "Sorry, that emoticon was not found" 
+  load_library(path).each do |key, value|
+    if value[:english] == emoticon
+      return value[:japanese]
+    end
   end
-  result
+  return "Sorry, that moticon was not found"
 end
   # code goes here
 
