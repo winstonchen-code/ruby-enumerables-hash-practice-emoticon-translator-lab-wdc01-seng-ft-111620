@@ -27,12 +27,11 @@ end
   # code goes here
 
 def get_english_meaning(path, emoticon)
-  emoticons = load_library(path)
-  result = emoticons["get_meaning"][emoticon] #the same above but change get_meaning
-  if result
-    result
+  emoji = load_library(path)
+  if emoji["get_meaning"].has_key?(emoticon)
+    emoji["get_meaning"][emoticon]
   else
-    "Sorry, that emoticon was not found"
+    return "Sorry, that emoticon was not found"
   end
 end
   # code goes here
